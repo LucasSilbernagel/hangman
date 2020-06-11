@@ -234,3 +234,54 @@ html {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+.wrapper {
+  margin: 0 auto;
+  text-align: center;
+}
+
+footer {
+  margin-top: 500px;
+}
+
+.gallows {
+  width: 100px;
+  position: relative;
+}
+
+.platform {
+  display: block;
+  position: absolute;
+  left: 20px;
+  top: 250px;
+  height: 5px;
+  width: 100px;
+  background: black;
+}
+
+.verticalScaffold {
+  display: block;
+  position: absolute;
+  left: 70px;
+  height: 250px;
+  width: 5px;
+  background: black;
+}
+
+.horizontalScaffold {
+  display: block;
+  position: absolute;
+  left: 70px;
+  height: 5px;
+  width: 100px;
+  background: black;
+}
+
+.rope {
+  display: block;
+  position: absolute;
+  left: 165px;
+  height: 40px;
+  width: 2px;
+  background: black;
+}
