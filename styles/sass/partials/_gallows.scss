@@ -1,6 +1,11 @@
 .gallows {
   width: 100px;
   position: relative;
+  display: none;
+}
+
+.active {
+  display: block;
 }
 
 .platform {
