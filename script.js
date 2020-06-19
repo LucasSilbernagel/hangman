@@ -23,6 +23,8 @@ const questions = [
   ]
 ]
 
+const letters = questions[0][1].split([,])
+
 // Open frame with legal info when "Legal" is clicked
 function start() {
   startGame.addEventListener('click', function () {
@@ -37,9 +39,10 @@ function displayQuestion() {
   category.innerHTML = `
     <h2>${questions[0][0]}</h2>
   `
-  blank.innerHTML = `
-    <h2>${questions[0][1]}</h2>
-  `
+
+  const displayedLetter = letters.map((letter) => `<span>${letter}</span>`).join('');
+
+  blank.innerHTML = displayedLetter;
 }
 
 // Document ready
