@@ -37,10 +37,10 @@ function start() {
 
 function displayQuestion() {
   category.innerHTML = `
-    <h2>${questions[0][0]}</h2>
+    <h2>Category: ${questions[0][0]}</h2>
   `
 
-  const displayedLetter = letters.map((letter) => `<span>${letter}</span>`).join('');
+  const displayedLetter = letters.map((letter) => `<span>${letter}</span>`).join(' ');
 
   blank.innerHTML = displayedLetter;
 }
