@@ -235,7 +235,9 @@ html {
   overflow: hidden;
 }
 
-body {
+body,
+input,
+button {
   text-transform: uppercase;
 }
 
@@ -384,4 +386,13 @@ span {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+.visible {
+  color: black;
+}
+
+form {
+  display: none;
+  margin-top: 20px;
 }
