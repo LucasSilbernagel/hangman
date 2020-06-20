@@ -8,3 +8,12 @@ span {
   border-bottom: 2px solid black;
   user-select: none;
 }
+
+.visible {
+  color: black;
+}
+
+form {
+  display: none;
+  margin-top: 20px;
+}

@@ -1,13 +1,3 @@
-const startGame = document.querySelector('.startGame');
-
-const body = document.querySelector('.body');
-
-const gallows = document.querySelector('.gallows');
-
-const category = document.querySelector('.category');
-
-const blank = document.querySelector('.blank');
-
 const questions = [
   [
     "animal",
@@ -23,27 +13,53 @@ const questions = [
   ]
 ]
 
-const letters = questions[0][1].split([,])
+let letters = questions[0][1].toUpperCase().split([,]);
 
-// Open frame with legal info when "Legal" is clicked
+const userGuess = [];
+
+// Start game
 function start() {
+  const startGame = document.querySelector('.startGame');
+  const gallows = document.querySelector('.gallows');
+  const body = document.querySelector('.body');
+  const guessForm = document.getElementById('guessForm');
+  const guessInput = document.getElementById('guessInput');
   startGame.addEventListener('click', function () {
     this.classList.add('hidden');
     body.classList.add('hidden');
     gallows.classList.add('active');
+    guessForm.classList.add('active');
+    guessInput.focus();
     displayQuestion();
   })
 }
 
 function displayQuestion() {
+  const category = document.querySelector('.category');
+  const blank = document.querySelector('.blank');
   category.innerHTML = `
     <h2>Category: ${questions[0][0]}</h2>
   `
-
-  const displayedLetter = letters.map((letter) => `<span>${letter}</span>`).join(' ');
-
+  const displayedLetter = letters.map((letter) => `<span class="correct">${letter}</span>`).join(' ');
   blank.innerHTML = displayedLetter;
 }
+
+guessForm.addEventListener('submit', function (e) {
+  let guessValue = document.getElementById('guessInput').value.toUpperCase();
+  let correct = document.querySelectorAll('.correct');
+  e.preventDefault();
+  userGuess.push(guessValue);
+
+  for (let i = 0; i < letters.length; i++) {
+    if (letters.includes(guessValue)) {
+      correct[i].classList.add('visible')
+    }
+  }
+
+  
+  guessForm.reset();
+  console.log(userGuess);
+})
 
 // Document ready
 function documentReady(func) {
