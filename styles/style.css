@@ -235,6 +235,10 @@ html {
   overflow: hidden;
 }
 
+body {
+  text-transform: uppercase;
+}
+
 .wrapper {
   margin: 0 auto;
   text-align: center;
@@ -246,6 +250,10 @@ footer {
 
 .hidden {
   display: none;
+}
+
+.startGame {
+  text-transform: uppercase;
 }
 
 .gallows {
@@ -362,4 +370,18 @@ footer {
   -webkit-transform: rotate(-20deg);
           transform: rotate(-20deg);
   background: black;
+}
+
+.blank {
+  margin-top: 290px;
+  font-size: 2rem;
+}
+
+span {
+  color: white;
+  border-bottom: 2px solid black;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
