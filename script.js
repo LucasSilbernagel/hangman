@@ -1,3 +1,4 @@
+// Grouped list of categories and words
 const questions = [
   [
     "animal",
@@ -13,7 +14,11 @@ const questions = [
   ]
 ]
 
+// Words to guess, split into individual letters
 let letters = questions[0][1].toUpperCase().split([,]);
+
+// User can only guess letters
+const validGuess = /[a-zA-Z]/;
 
 const userGuess = [];
 
@@ -34,8 +39,11 @@ function start() {
   })
 }
 
+// Display random category and number of letters for the word
 function displayQuestion() {
+  // Individual letter slots
   const category = document.querySelector('.category');
+  // Section for correct letters to appear
   const blank = document.querySelector('.blank');
   category.innerHTML = `
     <h2>Category: ${questions[0][0]}</h2>
@@ -44,15 +52,20 @@ function displayQuestion() {
   blank.innerHTML = displayedLetter;
 }
 
+// On form submit (user guess)
 guessForm.addEventListener('submit', function (e) {
   let guessValue = document.getElementById('guessInput').value.toUpperCase();
-  if (guessValue === "") {
-    alert('please enter a guess')
-  }
   let correct = document.querySelectorAll('.correct');
   e.preventDefault();
-  userGuess.push(guessValue);
+  // Make sure user guesses a letter
+  if (guessValue.match(validGuess)) {
+    // Push guessed letter to array. If not a valid guess, alert.
+    userGuess.push(guessValue);
+  } else {
+    alert('please enter a valid guess')
+  }
 
+  // If user guess is correct, make the letter appear in the word.
   for (let i = 0; i < letters.length; i++) {
     if (letters.includes(guessValue)) {
       if (correct[i].innerHTML === guessValue) {
@@ -61,9 +74,8 @@ guessForm.addEventListener('submit', function (e) {
     }
   }
 
-  
+  // Clear the form input after submit
   guessForm.reset();
-  console.log(userGuess);
 })
 
 // Document ready
