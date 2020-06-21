@@ -7,23 +7,31 @@
   <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
+
+  <!-- Header -->
   <header>
     <div class="wrapper">
       <h1>Hangman</h1>
     </div>
   </header>
+
+  <!-- Main -->
   <main>
     <div class="wrapper">
 
+      <!-- Button to start game -->
       <button class="startGame">Start Game</button>
 
+      <!-- Category is displayed here -->
       <div class="category"></div>
 
+      <!-- Gallows is displayed here -->
       <div class="gallows">
         <span class="rope"></span>
         <span class="horizontalScaffold"></span>
         <span class="verticalScaffold"></span>
         <span class="platform"></span>
+        <!-- Body parts appear here -->
         <div class="body">
           <span class="head"></span>
           <span class="torso"></span>
@@ -34,10 +42,13 @@
         </div>
       </div>
 
+      <!-- Incorrect guesses displayed here -->
       <div class="wrong"></div>
 
+      <!-- Blank spots for correctly guessed letters to appear -->
       <div class="blank"></div>
 
+      <!-- Form to input guesses -->
       <form action="#" id="guessForm">
         <label class="sr-only" for="guessInput">Guess a letter</label>
         <input id="guessInput" type="text" placeholder="letter" maxlength="1">
@@ -46,11 +57,15 @@
 
     </div>
   </main>
+
+  <!-- Footer -->
   <footer>
     <div class="wrapper">
       <p>Copyright 2020 <a href="https://lucassilbernagel.com/" target="_blank" rel="noopener noreferrer">Lucas Silbernagel</a></p>
     </div>
   </footer>
+
+  <!-- Load scripts -->
   <script src="./script.js"></script>
 </body>
 </html>
