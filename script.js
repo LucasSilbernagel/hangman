@@ -56,6 +56,7 @@ function displayQuestion() {
 guessForm.addEventListener('submit', function (e) {
   let guessValue = document.getElementById('guessInput').value.toUpperCase();
   let correct = document.querySelectorAll('.correct');
+  const wrong = document.querySelector('.wrong');
   e.preventDefault();
   // Make sure user guesses a letter
   if (guessValue.match(validGuess)) {
@@ -71,7 +72,11 @@ guessForm.addEventListener('submit', function (e) {
       if (correct[i].innerHTML === guessValue) {
         correct[i].classList.add('visible')
       }
-    }
+    } 
+  }
+
+  if (!letters.includes(guessValue)) {
+    wrong.innerHTML += `<p>${guessValue}</p>`
   }
 
   if (document.querySelectorAll('.correct.visible').length === letters.length) {
