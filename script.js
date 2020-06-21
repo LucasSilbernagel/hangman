@@ -74,6 +74,10 @@ guessForm.addEventListener('submit', function (e) {
     }
   }
 
+  if (document.querySelectorAll('.correct.visible').length === letters.length) {
+    alert('you win!')
+  }
+
   // Clear the form input after submit
   guessForm.reset();
 })
