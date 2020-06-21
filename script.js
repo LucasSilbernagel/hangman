@@ -46,13 +46,18 @@ function displayQuestion() {
 
 guessForm.addEventListener('submit', function (e) {
   let guessValue = document.getElementById('guessInput').value.toUpperCase();
+  if (guessValue === "") {
+    alert('please enter a guess')
+  }
   let correct = document.querySelectorAll('.correct');
   e.preventDefault();
   userGuess.push(guessValue);
 
   for (let i = 0; i < letters.length; i++) {
     if (letters.includes(guessValue)) {
-      correct[i].classList.add('visible')
+      if (correct[i].innerHTML === guessValue) {
+        correct[i].classList.add('visible')
+      }
     }
   }
 
