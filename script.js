@@ -31,7 +31,7 @@ function start() {
   const guessInput = document.getElementById('guessInput');
   startGame.addEventListener('click', function () {
     this.classList.add('hidden');
-    body.classList.add('hidden');
+    // body.classList.add('hidden');
     gallows.classList.add('active');
     guessForm.classList.add('active');
     guessInput.focus();
@@ -57,13 +57,21 @@ guessForm.addEventListener('submit', function (e) {
   let guessValue = document.getElementById('guessInput').value.toUpperCase();
   let correct = document.querySelectorAll('.correct');
   const wrong = document.querySelector('.wrong');
+  const head = document.querySelector('.head');
+  const torso = document.querySelector('.torso');
+  const leftArm = document.querySelector('.leftArm');
+  const rightArm = document.querySelector('.rightArm');
+  const leftLeg = document.querySelector('.leftLeg');
+  const rightLeg = document.querySelector('.rightLeg');
   e.preventDefault();
   // Make sure user guesses a letter
-  if (guessValue.match(validGuess)) {
+  if ((guessValue.match(validGuess)) && (!userGuess.includes(guessValue))) {
     // Push guessed letter to array. If not a valid guess, alert.
     userGuess.push(guessValue);
-  } else {
+  } else if (!guessValue.match(validGuess)) {
     alert('please enter a valid guess')
+  } else if ((guessValue.match(validGuess)) && (userGuess.includes(guessValue))) {
+    alert('You already guessed that letter!')
   }
 
   // If user guess is correct, make the letter appear in the word.
@@ -76,11 +84,28 @@ guessForm.addEventListener('submit', function (e) {
   }
 
   if (!letters.includes(guessValue)) {
-    wrong.innerHTML += `<p>${guessValue}</p>`
+    wrong.innerHTML += `<p>${guessValue}</p>`;
+    if (head.classList.contains('hidden')) {
+      head.classList.remove('hidden')
+    } else if ((!head.classList.contains('hidden')) && (torso.classList.contains('hidden'))) {
+      torso.classList.remove('hidden')
+    } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (leftArm.classList.contains('hidden'))) {
+      leftArm.classList.remove('hidden')
+    } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (rightArm.classList.contains('hidden'))) {
+      rightArm.classList.remove('hidden')
+    } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (!rightArm.classList.contains('hidden')) && (leftLeg.classList.contains('hidden'))) {
+      leftLeg.classList.remove('hidden')
+    } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (!rightArm.classList.contains('hidden')) && (!leftLeg.classList.contains('hidden')) && (rightLeg.classList.contains('hidden'))) {
+      rightLeg.classList.remove('hidden')
+    }
   }
 
   if (document.querySelectorAll('.correct.visible').length === letters.length) {
     alert('you win!')
+  }
+
+  if (!rightLeg.classList.contains('hidden')) {
+    alert('You lose!')
   }
 
   // Clear the form input after submit
