@@ -63,6 +63,11 @@ guessForm.addEventListener('submit', function (e) {
   const rightArm = document.querySelector('.rightArm');
   const leftLeg = document.querySelector('.leftLeg');
   const rightLeg = document.querySelector('.rightLeg');
+  const playAgain = document.querySelector('.playAgain');
+  // Function to refresh page when Play Again button is clicked
+  playAgain.addEventListener('click', function () {
+    location = location;
+  });
   e.preventDefault();
   // Make sure user guesses a letter
   if ((guessValue.match(validGuess)) && (!userGuess.includes(guessValue))) {
@@ -107,10 +112,12 @@ guessForm.addEventListener('submit', function (e) {
 
   if (document.querySelectorAll('.correct.visible').length === letters.length) {
     alert('you win!')
+    playAgain.classList.remove('hidden');
   }
 
   if (!rightLeg.classList.contains('hidden')) {
     alert('You lose!')
+    playAgain.classList.remove('hidden');
   }
 
   // Clear the form input after submit
