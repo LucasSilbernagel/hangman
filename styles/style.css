@@ -235,10 +235,17 @@ html {
   overflow: hidden;
 }
 
+body {
+  cursor: default;
+  background-color: #f5f5f5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.4'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
 body,
 input,
 button {
   text-transform: uppercase;
+  font-family: "Permanent Marker", cursive;
 }
 
 .wrapper {
@@ -246,22 +253,48 @@ button {
   text-align: center;
 }
 
-footer {
-  margin-top: 500px;
+button {
+  font-size: 1.7rem;
+  background: #000000;
+  color: #FFFF00;
+  border: none;
+  padding: 5px;
+  -webkit-box-shadow: 5px 10px;
+          box-shadow: 5px 10px;
+}
+
+button:hover {
+  cursor: pointer;
+  color: #000000;
+  background: #FFFF00;
+}
+
+button:active {
+  -webkit-box-shadow: 2px 5px;
+          box-shadow: 2px 5px;
+}
+
+a {
+  color: #000000;
 }
 
 .hidden {
   display: none;
 }
 
+h1 {
+  font-size: 3rem;
+}
+
 .startGame {
-  text-transform: uppercase;
+  margin-top: 320px;
 }
 
 .gallows {
   width: 100px;
   position: relative;
-  display: none;
+  left: 35px;
+  top: 20px;
 }
 
 .active {
@@ -275,7 +308,7 @@ footer {
   top: 250px;
   height: 5px;
   width: 100px;
-  background: black;
+  background: #000000;
 }
 
 .verticalScaffold {
@@ -284,7 +317,7 @@ footer {
   left: 70px;
   height: 250px;
   width: 5px;
-  background: black;
+  background: #000000;
 }
 
 .horizontalScaffold {
@@ -293,7 +326,7 @@ footer {
   left: 70px;
   height: 5px;
   width: 100px;
-  background: black;
+  background: #000000;
 }
 
 .rope {
@@ -302,7 +335,7 @@ footer {
   left: 165px;
   height: 40px;
   width: 2px;
-  background: black;
+  background: #000000;
 }
 
 .head {
@@ -312,7 +345,7 @@ footer {
   border-radius: 50%;
   height: 40px;
   width: 40px;
-  border: 4px solid black;
+  border: 4px solid #000000;
 }
 
 .torso {
@@ -321,7 +354,7 @@ footer {
   top: 77px;
   height: 70px;
   width: 4px;
-  background: black;
+  background: #000000;
 }
 
 .leftArm {
@@ -332,7 +365,7 @@ footer {
   width: 4px;
   -webkit-transform: rotate(20deg);
           transform: rotate(20deg);
-  background: black;
+  background: #000000;
 }
 
 .rightArm {
@@ -343,7 +376,7 @@ footer {
   width: 4px;
   -webkit-transform: rotate(-20deg);
           transform: rotate(-20deg);
-  background: black;
+  background: #000000;
 }
 
 .leftLeg {
@@ -354,7 +387,7 @@ footer {
   width: 4px;
   -webkit-transform: rotate(20deg);
           transform: rotate(20deg);
-  background: black;
+  background: #000000;
 }
 
 .rightLeg {
@@ -365,7 +398,7 @@ footer {
   width: 4px;
   -webkit-transform: rotate(-20deg);
           transform: rotate(-20deg);
-  background: black;
+  background: #000000;
 }
 
 .blank {
@@ -374,7 +407,7 @@ footer {
 }
 
 span {
-  color: white;
+  color: transparent;
   border-bottom: 2px solid black;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -389,4 +422,8 @@ span {
 form {
   display: none;
   margin-top: 20px;
+}
+
+footer {
+  font-size: 1rem;
 }

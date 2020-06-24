@@ -1,7 +1,8 @@
 .gallows {
   width: 100px;
   position: relative;
-  display: none;
+  left: 35px;
+  top: 20px;
 }
 
 .active {
@@ -15,7 +16,7 @@
   top: 250px;
   height: 5px;
   width: 100px;
-  background: black;
+  background: $black;
 }
 
 .verticalScaffold {
@@ -24,7 +25,7 @@
   left: 70px;
   height: 250px;
   width: 5px;
-  background: black;
+  background: $black;
 }
 
 .horizontalScaffold {
@@ -33,7 +34,7 @@
   left: 70px;
   height: 5px;
   width: 100px;
-  background: black;
+  background: $black;
 }
 
 .rope {
@@ -42,5 +43,5 @@
   left: 165px;
   height: 40px;
   width: 2px;
-  background: black;
+  background: $black;
 }
