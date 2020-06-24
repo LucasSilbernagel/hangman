@@ -52,7 +52,6 @@ function start() {
   startGame.addEventListener('click', function () {
     this.classList.add('hidden');
     guessForm.classList.add('active');
-    guessInput.focus();
     displayQuestion();
   })
 }
