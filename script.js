@@ -48,7 +48,6 @@ const userGuess = [];
 function start() {
   const startGame = document.querySelector('.startGame');
   const gallows = document.querySelector('.gallows');
-  const body = document.querySelector('.body');
   const guessForm = document.getElementById('guessForm');
   const guessInput = document.getElementById('guessInput');
   startGame.addEventListener('click', function () {
@@ -134,11 +133,17 @@ guessForm.addEventListener('submit', function (e) {
   if (document.querySelectorAll('.correct.visible').length === letters.length) {
     alert('you win!')
     playAgain.classList.remove('hidden');
+    guessForm.classList.remove('active');
   }
 
   if (!rightLeg.classList.contains('hidden')) {
     alert('You lose!')
     playAgain.classList.remove('hidden');
+    guessForm.classList.remove('active');
+    // Show the correct word
+    for (let i = 0; i < letters.length; i++) {
+      correct[i].classList.add('visible')
+    }
   }
 
   // Clear the form input after submit
