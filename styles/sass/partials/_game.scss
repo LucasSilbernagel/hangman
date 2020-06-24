@@ -1,6 +1,12 @@
-.blank {
-  margin-top: 290px;
+h2 {
+  text-shadow: 2px 2px $accent;
   font-size: 2rem;
+}
+
+.blank {
+  margin-top: 320px;
+  font-size: 2rem;
+  margin-bottom: 50px;
 }
 
 span {
@@ -16,4 +22,25 @@ span {
 form {
   display: none;
   margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+input {
+  border: none;
+  text-align: center;
+  font-size: 2rem;
+  width: 150px;
+}
+
+.wrong {
+  font-size: 2rem;
+  display: flex;
+  max-width: 320px;
+  padding: 10px;
+  margin-bottom: 100px;
+  p {
+    margin: 0;
+    color: $wrong;
+    margin-right: 10px;
+  }
 }

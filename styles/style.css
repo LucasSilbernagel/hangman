@@ -258,7 +258,7 @@ button {
   background: #000000;
   color: #FFFF00;
   border: none;
-  padding: 5px;
+  padding: 10px;
   -webkit-box-shadow: 5px 10px;
           box-shadow: 5px 10px;
 }
@@ -401,9 +401,15 @@ h1 {
   background: #000000;
 }
 
-.blank {
-  margin-top: 290px;
+h2 {
+  text-shadow: 2px 2px #FFFF00;
   font-size: 2rem;
+}
+
+.blank {
+  margin-top: 320px;
+  font-size: 2rem;
+  margin-bottom: 50px;
 }
 
 span {
@@ -422,6 +428,30 @@ span {
 form {
   display: none;
   margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+input {
+  border: none;
+  text-align: center;
+  font-size: 2rem;
+  width: 150px;
+}
+
+.wrong {
+  font-size: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 320px;
+  padding: 10px;
+  margin-bottom: 100px;
+}
+
+.wrong p {
+  margin: 0;
+  color: #FF0000;
+  margin-right: 10px;
 }
 
 footer {
