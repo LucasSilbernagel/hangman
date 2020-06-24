@@ -68,6 +68,8 @@ guessForm.addEventListener('submit', function (e) {
   if ((guessValue.match(validGuess)) && (!userGuess.includes(guessValue))) {
     // Push guessed letter to array. If not a valid guess, alert.
     userGuess.push(guessValue);
+    // Add a body part for each incorrect guess
+    displayBodyParts();
   } else if (!guessValue.match(validGuess)) {
     alert('please enter a valid guess')
   } else if ((guessValue.match(validGuess)) && (userGuess.includes(guessValue))) {
@@ -83,20 +85,23 @@ guessForm.addEventListener('submit', function (e) {
     } 
   }
 
-  if (!letters.includes(guessValue)) {
-    wrong.innerHTML += `<p>${guessValue}</p>`;
-    if (head.classList.contains('hidden')) {
-      head.classList.remove('hidden')
-    } else if ((!head.classList.contains('hidden')) && (torso.classList.contains('hidden'))) {
-      torso.classList.remove('hidden')
-    } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (leftArm.classList.contains('hidden'))) {
-      leftArm.classList.remove('hidden')
-    } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (rightArm.classList.contains('hidden'))) {
-      rightArm.classList.remove('hidden')
-    } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (!rightArm.classList.contains('hidden')) && (leftLeg.classList.contains('hidden'))) {
-      leftLeg.classList.remove('hidden')
-    } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (!rightArm.classList.contains('hidden')) && (!leftLeg.classList.contains('hidden')) && (rightLeg.classList.contains('hidden'))) {
-      rightLeg.classList.remove('hidden')
+  // Function to add body parts for incorrect guesses
+  function displayBodyParts() {
+    if (!letters.includes(guessValue)) {
+      wrong.innerHTML += `<p>${guessValue}</p>`;
+      if (head.classList.contains('hidden')) {
+        head.classList.remove('hidden')
+      } else if ((!head.classList.contains('hidden')) && (torso.classList.contains('hidden'))) {
+        torso.classList.remove('hidden')
+      } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (leftArm.classList.contains('hidden'))) {
+        leftArm.classList.remove('hidden')
+      } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (rightArm.classList.contains('hidden'))) {
+        rightArm.classList.remove('hidden')
+      } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (!rightArm.classList.contains('hidden')) && (leftLeg.classList.contains('hidden'))) {
+        leftLeg.classList.remove('hidden')
+      } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (!rightArm.classList.contains('hidden')) && (!leftLeg.classList.contains('hidden')) && (rightLeg.classList.contains('hidden'))) {
+        rightLeg.classList.remove('hidden')
+      }
     }
   }
 
