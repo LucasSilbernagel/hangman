@@ -2,20 +2,42 @@
 const questions = [
   [
     "animal",
-    "cat"
+    "lizard"
+  ],
+  [
+    "animal",
+    "bobcat"
   ],
   [
     "occupation",
     "teacher"
   ],
   [
+    "occupation",
+    "programmer"
+  ],
+  [
     "food",
     "pizza"
+  ],
+  [
+    "food",
+    "waffles"
+  ],
+  [
+    "country",
+    "japan"
+  ],
+  [
+    "country",
+    "denmark"
   ]
 ]
 
+let randomQuestion = questions[Math.floor(Math.random()*questions.length)];
+
 // Words to guess, split into individual letters
-let letters = questions[0][1].toUpperCase().split([,]);
+let letters = randomQuestion[1].toUpperCase().split([,]);
 
 // User can only guess letters
 const validGuess = /[a-zA-Z]/;
@@ -31,7 +53,6 @@ function start() {
   const guessInput = document.getElementById('guessInput');
   startGame.addEventListener('click', function () {
     this.classList.add('hidden');
-    // body.classList.add('hidden');
     gallows.classList.add('active');
     guessForm.classList.add('active');
     guessInput.focus();
@@ -46,7 +67,7 @@ function displayQuestion() {
   // Section for correct letters to appear
   const blank = document.querySelector('.blank');
   category.innerHTML = `
-    <h2>Category: ${questions[0][0]}</h2>
+    <h2>Category: ${randomQuestion[0]}</h2>
   `
   const displayedLetter = letters.map((letter) => `<span class="correct">${letter}</span>`).join(' ');
   blank.innerHTML = displayedLetter;
