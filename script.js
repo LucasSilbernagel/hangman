@@ -9,12 +9,12 @@ const questions = [
     "bobcat"
   ],
   [
-    "occupation",
-    "teacher"
+    "plant",
+    "cactus"
   ],
   [
-    "occupation",
-    "programmer"
+    "plant",
+    "shrub"
   ],
   [
     "food",
@@ -22,7 +22,7 @@ const questions = [
   ],
   [
     "food",
-    "waffles"
+    "waffle"
   ],
   [
     "country",
@@ -64,7 +64,7 @@ function displayQuestion() {
   // Section for correct letters to appear
   const blank = document.querySelector('.blank');
   category.innerHTML = `
-    <h2>Category: ${randomQuestion[0]}</h2>
+    <h2>${randomQuestion[0]}</h2>
   `
   const displayedLetter = letters.map((letter) => `<span class="correct">${letter}</span>`).join(' ');
   blank.innerHTML = displayedLetter;
