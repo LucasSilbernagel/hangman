@@ -47,12 +47,19 @@ const userGuess = [];
 // Start game
 function start() {
   const onePlayer = document.querySelector('.onePlayer');
+  const twoPlayers = document.querySelector('.twoPlayers');
   const guessForm = document.getElementById('guessForm');
-  const guessInput = document.getElementById('guessInput');
+  const questionForm = document.getElementById('questionForm');
   onePlayer.addEventListener('click', function () {
     this.classList.add('hidden');
+    twoPlayers.classList.add('hidden');
     guessForm.classList.add('active');
     displayQuestion();
+  })
+  twoPlayers.addEventListener('click', function () {
+    this.classList.add('hidden');
+    onePlayer.classList.add('hidden');
+    questionForm.classList.add('active2');
   })
 }
 

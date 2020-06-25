@@ -446,7 +446,31 @@ form {
   margin-bottom: 20px;
 }
 
-input {
+.questionForm {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+  font-size: 1.5rem;
+}
+
+.questionForm input {
+  margin-bottom: 20px;
+}
+
+.questionForm label {
+  margin-bottom: 10px;
+}
+
+.active2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.guessForm input {
   border: none;
   text-align: center;
   font-size: 2rem;
