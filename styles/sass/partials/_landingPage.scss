@@ -2,6 +2,15 @@ h1 {
   font-size: 3rem;
 }
 
-.startGame {
-  margin-top: 320px;
+.startButtonContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 212px;
+  position: relative;
+  top: 310px;
+  left: 50px;
+}
+
+.onePlayer {
+  margin-bottom: 20px;
 }

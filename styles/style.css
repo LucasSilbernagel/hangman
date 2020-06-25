@@ -287,8 +287,22 @@ h1 {
   font-size: 3rem;
 }
 
-.startGame {
-  margin-top: 320px;
+.startButtonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 212px;
+  position: relative;
+  top: 310px;
+  left: 50px;
+}
+
+.onePlayer {
+  margin-bottom: 20px;
 }
 
 .gallows {
@@ -468,10 +482,16 @@ footer {
   .gallows {
     left: 200px;
   }
+  .startButtonContainer {
+    left: 200px;
+  }
 }
 
 @media (min-width: 800px) {
   .gallows {
+    left: 400px;
+  }
+  .startButtonContainer {
     left: 400px;
   }
 }
@@ -479,5 +499,8 @@ footer {
 @media (min-width: 1200px) {
   .gallows {
     left: 630px;
+  }
+  .startButtonContainer {
+    left: 620px;
   }
 }

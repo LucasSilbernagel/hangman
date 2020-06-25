@@ -46,10 +46,10 @@ const userGuess = [];
 
 // Start game
 function start() {
-  const startGame = document.querySelector('.startGame');
+  const onePlayer = document.querySelector('.onePlayer');
   const guessForm = document.getElementById('guessForm');
   const guessInput = document.getElementById('guessInput');
-  startGame.addEventListener('click', function () {
+  onePlayer.addEventListener('click', function () {
     this.classList.add('hidden');
     guessForm.classList.add('active');
     displayQuestion();
