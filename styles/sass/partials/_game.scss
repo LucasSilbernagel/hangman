@@ -37,10 +37,15 @@ input {
   display: flex;
   max-width: 320px;
   padding: 10px;
-  margin-bottom: 100px;
+  margin: 0 auto;
+  margin-bottom: 20px;
   p {
     margin: 0;
     color: $wrong;
     margin-right: 10px;
   }
+}
+
+.playAgain {
+  margin-bottom: 50px;
 }

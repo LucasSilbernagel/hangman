@@ -445,7 +445,8 @@ input {
   display: flex;
   max-width: 320px;
   padding: 10px;
-  margin-bottom: 100px;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .wrong p {
@@ -454,6 +455,28 @@ input {
   margin-right: 10px;
 }
 
+.playAgain {
+  margin-bottom: 50px;
+}
+
 footer {
   font-size: 1rem;
+}
+
+@media (min-width: 500px) {
+  .gallows {
+    left: 200px;
+  }
+}
+
+@media (min-width: 800px) {
+  .gallows {
+    left: 400px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .gallows {
+    left: 630px;
+  }
 }
