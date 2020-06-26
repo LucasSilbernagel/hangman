@@ -264,7 +264,8 @@ button {
           box-shadow: 5px 10px;
 }
 
-button:hover {
+button:hover,
+button:focus {
   cursor: pointer;
   color: #000000;
   background: #FFFF00;

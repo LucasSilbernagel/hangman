@@ -34,7 +34,9 @@ const questions = [
   ]
 ]
 
-let randomQuestion = questions[Math.floor(Math.random()*questions.length)];
+const questions2 = [];
+
+let randomQuestion = questions[Math.floor(Math.random() * questions.length)];
 
 // Words to guess, split into individual letters
 let letters = randomQuestion[1].toUpperCase().split([,]);
@@ -49,6 +51,7 @@ function start() {
   const onePlayer = document.querySelector('.onePlayer');
   const twoPlayers = document.querySelector('.twoPlayers');
   const guessForm = document.getElementById('guessForm');
+  const guessForm2 = document.getElementById('guessForm2');
   const questionForm = document.getElementById('questionForm');
   onePlayer.addEventListener('click', function () {
     this.classList.add('hidden');
@@ -63,7 +66,7 @@ function start() {
   })
 }
 
-// Display random category and number of letters for the word
+// Display random category and number of letters for the word (one player game)
 function displayQuestion() {
   // Individual letter slots
   const category = document.querySelector('.category');
@@ -76,7 +79,35 @@ function displayQuestion() {
   blank.innerHTML = displayedLetter;
 }
 
-// On form submit (user guess)
+// Display category and number of letters for the word (two player game)
+function displayQuestion2() {
+  // Individual letter slots
+  const category = document.querySelector('.category');
+  // Section for correct letters to appear
+  const blank = document.querySelector('.blank');
+  category.innerHTML = `
+    <h2>${questions2[0]}</h2>
+  `
+  let letters2 = questions2[1].toUpperCase().split([,]);
+  const displayedLetter = letters2.map((letter) => `<span class="correct">${letter}</span>`).join(' ');
+  blank.innerHTML = displayedLetter;
+}
+
+// On form submit (question creation for 2 player game)
+questionForm.addEventListener('submit', function (e) {
+  const categoryInput = document.getElementById('categoryInput');
+  const questionInput = document.getElementById('questionInput');
+  // Prevent page reload
+  e.preventDefault();
+  // Push category and word to questions2 array
+  questions2.push(categoryInput.value);
+  questions2.push(questionInput.value);
+  this.classList.remove('active2');
+  displayQuestion2();
+  guessForm2.classList.add('active');
+})
+
+// On form submit (user guess) (one player game)
 guessForm.addEventListener('submit', function (e) {
   let guessValue = document.getElementById('guessInput').value.toUpperCase();
   let correct = document.querySelectorAll('.correct');
@@ -105,7 +136,7 @@ guessForm.addEventListener('submit', function (e) {
     alert('You already guessed that letter!')
   }
 
-  // If user guess is correct, make the letter appear in the word.
+  // If user guess is correct, make the letter appear in the word (one player game)
   for (let i = 0; i < letters.length; i++) {
     if (letters.includes(guessValue)) {
       if (correct[i].innerHTML === guessValue) {
@@ -152,6 +183,86 @@ guessForm.addEventListener('submit', function (e) {
 
   // Clear the form input after submit
   guessForm.reset();
+})
+
+// On form submit (user guess) (two player game)
+guessForm2.addEventListener('submit', function (e) {
+  let letters2 = questions2[1].toUpperCase().split([,]);
+  let guessValue = document.getElementById('guessInput2').value.toUpperCase();
+  let correct = document.querySelectorAll('.correct');
+  const wrong = document.querySelector('.wrong');
+  const head = document.querySelector('.head');
+  const torso = document.querySelector('.torso');
+  const leftArm = document.querySelector('.leftArm');
+  const rightArm = document.querySelector('.rightArm');
+  const leftLeg = document.querySelector('.leftLeg');
+  const rightLeg = document.querySelector('.rightLeg');
+  const playAgain = document.querySelector('.playAgain');
+  // Function to refresh page when Play Again button is clicked
+  playAgain.addEventListener('click', function () {
+    location = location;
+  });
+  e.preventDefault();
+  // Make sure user guesses a letter
+  if ((guessValue.match(validGuess)) && (!userGuess.includes(guessValue))) {
+    // Push guessed letter to array. If not a valid guess, alert.
+    userGuess.push(guessValue);
+    // Add a body part for each incorrect guess
+    displayBodyParts();
+  } else if (!guessValue.match(validGuess)) {
+    alert('please enter a valid guess')
+  } else if ((guessValue.match(validGuess)) && (userGuess.includes(guessValue))) {
+    alert('You already guessed that letter!')
+  }
+
+  // If user guess is correct, make the letter appear in the word (one player game)
+  for (let i = 0; i < letters2.length; i++) {
+    if (letters2.includes(guessValue)) {
+      if (correct[i].innerHTML === guessValue) {
+        correct[i].classList.add('visible')
+      }
+    } 
+  }
+
+  // Function to add body parts for incorrect guesses
+  function displayBodyParts() {
+    let letters2 = questions2[1].toUpperCase().split([,]);
+    if (!letters2.includes(guessValue)) {
+      wrong.innerHTML += `<p>${guessValue}</p>`;
+      if (head.classList.contains('hidden')) {
+        head.classList.remove('hidden')
+      } else if ((!head.classList.contains('hidden')) && (torso.classList.contains('hidden'))) {
+        torso.classList.remove('hidden')
+      } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (leftArm.classList.contains('hidden'))) {
+        leftArm.classList.remove('hidden')
+      } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (rightArm.classList.contains('hidden'))) {
+        rightArm.classList.remove('hidden')
+      } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (!rightArm.classList.contains('hidden')) && (leftLeg.classList.contains('hidden'))) {
+        leftLeg.classList.remove('hidden')
+      } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (!rightArm.classList.contains('hidden')) && (!leftLeg.classList.contains('hidden')) && (rightLeg.classList.contains('hidden'))) {
+        rightLeg.classList.remove('hidden')
+      }
+    }
+  }
+
+  if (document.querySelectorAll('.correct.visible').length === letters2.length) {
+    alert('you win!')
+    playAgain.classList.remove('hidden');
+    guessForm2.classList.remove('active');
+  }
+
+  if (!rightLeg.classList.contains('hidden')) {
+    alert('You lose!')
+    playAgain.classList.remove('hidden');
+    guessForm2.classList.remove('active');
+    // Show the correct word
+    for (let i = 0; i < letters2.length; i++) {
+      correct[i].classList.add('visible')
+    }
+  }
+
+  // Clear the form input after submit
+  guessForm2.reset();
 })
 
 // Document ready
