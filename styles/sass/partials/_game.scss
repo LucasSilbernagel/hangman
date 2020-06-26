@@ -25,7 +25,24 @@ form {
   margin-bottom: 20px;
 }
 
-input {
+.questionForm {
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  input {
+    margin-bottom: 20px;
+  }
+  label {
+    margin-bottom: 10px;
+  }
+}
+
+.active2 {
+  display: flex;
+}
+
+.guessForm input {
   border: none;
   text-align: center;
   font-size: 2rem;

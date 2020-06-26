@@ -26,7 +26,8 @@ button {
   box-shadow: 5px 10px;
 }
 
-button:hover {
+button:hover,
+button:focus {
   cursor: pointer;
   color: $black;
   background: $accent;

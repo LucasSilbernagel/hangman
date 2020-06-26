@@ -2,10 +2,16 @@
   .gallows {
     left: 200px;
   }
+  .startButtonContainer {
+    left: 200px;
+  }
 }
 
 @media (min-width: 800px) {
   .gallows {
+    left: 400px;
+  }
+  .startButtonContainer {
     left: 400px;
   }
 }
@@ -13,5 +19,8 @@
 @media (min-width: 1200px) {
   .gallows {
     left: 630px;
+  }
+  .startButtonContainer {
+    left: 620px;
   }
 }

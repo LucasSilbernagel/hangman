@@ -264,7 +264,8 @@ button {
           box-shadow: 5px 10px;
 }
 
-button:hover {
+button:hover,
+button:focus {
   cursor: pointer;
   color: #000000;
   background: #FFFF00;
@@ -287,8 +288,22 @@ h1 {
   font-size: 3rem;
 }
 
-.startGame {
-  margin-top: 320px;
+.startButtonContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 212px;
+  position: relative;
+  top: 310px;
+  left: 50px;
+}
+
+.onePlayer {
+  margin-bottom: 20px;
 }
 
 .gallows {
@@ -432,7 +447,31 @@ form {
   margin-bottom: 20px;
 }
 
-input {
+.questionForm {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+  font-size: 1.5rem;
+}
+
+.questionForm input {
+  margin-bottom: 20px;
+}
+
+.questionForm label {
+  margin-bottom: 10px;
+}
+
+.active2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.guessForm input {
   border: none;
   text-align: center;
   font-size: 2rem;
@@ -468,10 +507,16 @@ footer {
   .gallows {
     left: 200px;
   }
+  .startButtonContainer {
+    left: 200px;
+  }
 }
 
 @media (min-width: 800px) {
   .gallows {
+    left: 400px;
+  }
+  .startButtonContainer {
     left: 400px;
   }
 }
@@ -479,5 +524,8 @@ footer {
 @media (min-width: 1200px) {
   .gallows {
     left: 630px;
+  }
+  .startButtonContainer {
+    left: 620px;
   }
 }

@@ -40,16 +40,35 @@
         </div>
       </div>
 
-      <!-- Button to start game -->
-      <button class="startGame">Start Game</button>
+      <div class="startButtonContainer">
+        <!-- Buttons to start game -->
+        <button class="onePlayer">One Player</button>
+        <button class="twoPlayers">Two Players</button>
+      </div>
 
       <!-- Blank spots for correctly guessed letters to appear -->
       <div class="blank"></div>
 
-      <!-- Form to input guesses -->
-      <form action="#" id="guessForm">
+      <!-- Form to create a question -->
+      <form action="#" id="questionForm" class="questionForm">
+        <label for="categoryInput">Name your category</label>
+        <input type="text" id="categoryInput" placeholder="category">
+        <label for="questionInput">Type your word</label>
+        <input type="text" id="questionInput" placeholder="word">
+        <button>start!</button>
+      </form>
+
+      <!-- Form to input guesses (one player) -->
+      <form action="#" id="guessForm" class="guessForm">
         <label class="sr-only" for="guessInput">Guess a letter</label>
         <input id="guessInput" type="text" placeholder="letter" maxlength="1">
+        <button>guess</button>
+      </form>
+
+      <!-- Form to input guesses (two players) -->
+      <form action="#" id="guessForm2" class="guessForm">
+        <label class="sr-only" for="guessInput">Guess a letter</label>
+        <input id="guessInput2" type="text" placeholder="letter" maxlength="1">
         <button>guess</button>
       </form>
 
