@@ -1,3 +1,17 @@
+// States to toggle with JavaScript
+.hidden {
+  display: none;
+}
+.visible {
+  color: $black;
+}
+.active {
+  display: block;
+}
+.active2 {
+  display: flex;
+}
+
 body {
   cursor: default;
   background-color: #f5f5f5;
@@ -39,8 +53,4 @@ button:active {
 
 a {
   color: $black;
-}
-
-.hidden {
-  display: none;
 }

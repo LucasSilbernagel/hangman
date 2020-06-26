@@ -1,5 +1,22 @@
-.head {
+.head,
+.torso,
+.leftArm,
+.rightArm,
+.leftLeg,
+.rightLeg {
   position: absolute;
+}
+
+.torso,
+.leftArm,
+.rightArm,
+.leftLeg,
+.rightLeg {
+  background: $black;
+  width: 4px;
+}
+
+.head {
   left: 145px;
   top: 40px;
   border-radius: 50%;
@@ -9,50 +26,35 @@
 }
 
 .torso {
-  position: absolute;
   left: 165px;
   top: 77px;
   height: 70px;
-  width: 4px;
-  background: $black;
 }
 
 .leftArm {
-  position: absolute;
   left: 157px;
   top: 85px;
   height: 50px;
-  width: 4px;
   transform: rotate(20deg);
-  background: $black;
 }
 
 .rightArm {
-  position: absolute;
   left: 173px;
   top: 85px;
   height: 50px;
-  width: 4px;
   transform: rotate(-20deg);
-  background: $black;
 }
 
 .leftLeg {
-  position: absolute;
   left: 155px;
   top: 143px;
   height: 60px;
-  width: 4px;
   transform: rotate(20deg);
-  background: $black;
 }
 
 .rightLeg {
-  position: absolute;
   left: 175px;
   top: 143px;
   height: 60px;
-  width: 4px;
   transform: rotate(-20deg);
-  background: $black;
 }
