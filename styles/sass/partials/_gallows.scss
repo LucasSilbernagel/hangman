@@ -1,47 +1,49 @@
-.gallows {
+.gallows,
+.platform,
+.horizontalScaffold {
   width: 100px;
+}
+
+.platform,
+.verticalScaffold,
+.horizontalScaffold,
+.rope {
+  display: block;
+}
+
+.platform,
+.verticalScaffold,
+.horizontalScaffold,
+.rope {
+  position: absolute;
+  background: $black;
+}
+
+.gallows {
   position: relative;
   left: 35px;
   top: 20px;
 }
 
-.active {
-  display: block;
-}
-
 .platform {
-  display: block;
-  position: absolute;
   left: 20px;
   top: 250px;
   height: 5px;
-  width: 100px;
-  background: $black;
 }
 
 .verticalScaffold {
-  display: block;
-  position: absolute;
   left: 70px;
   height: 250px;
   width: 5px;
-  background: $black;
 }
 
 .horizontalScaffold {
-  display: block;
-  position: absolute;
   left: 70px;
   height: 5px;
-  width: 100px;
-  background: $black;
 }
 
 .rope {
-  display: block;
-  position: absolute;
   left: 165px;
   height: 40px;
   width: 2px;
-  background: $black;
 }
