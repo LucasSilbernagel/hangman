@@ -9,12 +9,28 @@ const questions = [
     "bobcat"
   ],
   [
+    "animal",
+    "snake"
+  ],
+  [
+    "animal",
+    "parrot"
+  ],
+  [
     "plant",
     "cactus"
   ],
   [
     "plant",
     "shrub"
+  ],
+  [
+    "plant",
+    "orchid"
+  ],
+  [
+    "plant",
+    "grass"
   ],
   [
     "food",
@@ -25,8 +41,24 @@ const questions = [
     "waffle"
   ],
   [
+    "food",
+    "burger"
+  ],
+  [
+    "food",
+    "lasagna"
+  ],
+  [
     "country",
     "japan"
+  ],
+  [
+    "country",
+    "canada"
+  ],
+  [
+    "country",
+    "brazil"
   ],
   [
     "country",
