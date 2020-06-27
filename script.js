@@ -107,9 +107,9 @@ function displayQuestion() {
   // Section for correct letters to appear
   const blank = document.querySelector('.blank');
   category.innerHTML = `
-    <h2>${randomQuestion[0]}</h2>
+    <h2 aria-label="Category: ${randomQuestion[0]}, ${randomQuestion[1].length} letters">${randomQuestion[0]}</h2>
   `
-  const displayedLetter = letters.map((letter) => `<span class="correct">${letter}</span>`).join(' ');
+  const displayedLetter = letters.map((letter) => `<span aria-hidden="true" class="correct">${letter}</span>`).join(' ');
   blank.innerHTML = displayedLetter;
 }
 
@@ -120,10 +120,10 @@ function displayQuestion2() {
   // Section for correct letters to appear
   const blank = document.querySelector('.blank');
   category.innerHTML = `
-    <h2>${questions2[0]}</h2>
+    <h2 aria-label="Category: ${questions2[0]}, ${questions2[1].length} letters">${questions2[0]}</h2>
   `
   let letters2 = questions2[1].toUpperCase().split([,]);
-  const displayedLetter = letters2.map((letter) => `<span class="correct">${letter}</span>`).join(' ');
+  const displayedLetter = letters2.map((letter) => `<span aria-hidden="true" class="correct">${letter}</span>`).join(' ');
   blank.innerHTML = displayedLetter;
 }
 
@@ -172,7 +172,8 @@ guessForm.addEventListener('submit', function (e) {
   for (let i = 0; i < letters.length; i++) {
     if (letters.includes(guessValue)) {
       if (correct[i].innerHTML === guessValue) {
-        correct[i].classList.add('visible')
+        correct[i].classList.add('visible');
+        correct[i].setAttribute("aria-hidden", "false");
       }
     } 
   }
@@ -252,7 +253,8 @@ guessForm2.addEventListener('submit', function (e) {
   for (let i = 0; i < letters2.length; i++) {
     if (letters2.includes(guessValue)) {
       if (correct[i].innerHTML === guessValue) {
-        correct[i].classList.add('visible')
+        correct[i].classList.add('visible');
+        correct[i].setAttribute("aria-hidden", "false");
       }
     } 
   }
