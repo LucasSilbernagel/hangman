@@ -1,4 +1,4 @@
-// Grouped list of categories and words
+// Grouped list of categories and words for one player game
 const questions = [
   [
     "animal",
@@ -34,16 +34,19 @@ const questions = [
   ]
 ]
 
+// Array to hold category and question for two player game
 const questions2 = [];
 
+// Randomize order of questions for one player game
 let randomQuestion = questions[Math.floor(Math.random() * questions.length)];
 
 // Words to guess, split into individual letters
 let letters = randomQuestion[1].toUpperCase().split([,]);
 
-// User can only guess letters
+// REGEX to ensure user can only guess letters
 const validGuess = /[a-zA-Z]/;
 
+// Array to hold user guess
 const userGuess = [];
 
 // Start game
@@ -51,7 +54,6 @@ function start() {
   const onePlayer = document.querySelector('.onePlayer');
   const twoPlayers = document.querySelector('.twoPlayers');
   const guessForm = document.getElementById('guessForm');
-  const guessForm2 = document.getElementById('guessForm2');
   const questionForm = document.getElementById('questionForm');
   onePlayer.addEventListener('click', function () {
     this.classList.add('hidden');
@@ -118,11 +120,7 @@ guessForm.addEventListener('submit', function (e) {
   const rightArm = document.querySelector('.rightArm');
   const leftLeg = document.querySelector('.leftLeg');
   const rightLeg = document.querySelector('.rightLeg');
-  const playAgain = document.querySelector('.playAgain');
-  // Function to refresh page when Play Again button is clicked
-  playAgain.addEventListener('click', function () {
-    location = location;
-  });
+  // Prevent page from reloading
   e.preventDefault();
   // Make sure user guesses a letter
   if ((guessValue.match(validGuess)) && (!userGuess.includes(guessValue))) {
@@ -130,8 +128,10 @@ guessForm.addEventListener('submit', function (e) {
     userGuess.push(guessValue);
     // Add a body part for each incorrect guess
     displayBodyParts();
+    // Alert if guess is not valid
   } else if (!guessValue.match(validGuess)) {
     alert('please enter a valid guess')
+    // Alert if letter has already been guessed
   } else if ((guessValue.match(validGuess)) && (userGuess.includes(guessValue))) {
     alert('You already guessed that letter!')
   }
@@ -165,12 +165,14 @@ guessForm.addEventListener('submit', function (e) {
     }
   }
 
+  // If all letters have been guessed correctly, player wins
   if (document.querySelectorAll('.correct.visible').length === letters.length) {
     alert('you win!')
     playAgain.classList.remove('hidden');
     guessForm.classList.remove('active');
   }
 
+  // If hangman image is completed, player loses
   if (!rightLeg.classList.contains('hidden')) {
     alert('You lose!')
     playAgain.classList.remove('hidden');
@@ -198,10 +200,7 @@ guessForm2.addEventListener('submit', function (e) {
   const leftLeg = document.querySelector('.leftLeg');
   const rightLeg = document.querySelector('.rightLeg');
   const playAgain = document.querySelector('.playAgain');
-  // Function to refresh page when Play Again button is clicked
-  playAgain.addEventListener('click', function () {
-    location = location;
-  });
+  // Prevent page from reloading
   e.preventDefault();
   // Make sure user guesses a letter
   if ((guessValue.match(validGuess)) && (!userGuess.includes(guessValue))) {
@@ -209,8 +208,10 @@ guessForm2.addEventListener('submit', function (e) {
     userGuess.push(guessValue);
     // Add a body part for each incorrect guess
     displayBodyParts();
+    // Alert if guess is not valid
   } else if (!guessValue.match(validGuess)) {
     alert('please enter a valid guess')
+    // Alert if letter has already been guessed
   } else if ((guessValue.match(validGuess)) && (userGuess.includes(guessValue))) {
     alert('You already guessed that letter!')
   }
@@ -245,12 +246,14 @@ guessForm2.addEventListener('submit', function (e) {
     }
   }
 
+  // If all letters have been guessed correctly, player wins
   if (document.querySelectorAll('.correct.visible').length === letters2.length) {
     alert('you win!')
     playAgain.classList.remove('hidden');
     guessForm2.classList.remove('active');
   }
 
+  // If hangman image has been completed, player loses
   if (!rightLeg.classList.contains('hidden')) {
     alert('You lose!')
     playAgain.classList.remove('hidden');
@@ -264,6 +267,12 @@ guessForm2.addEventListener('submit', function (e) {
   // Clear the form input after submit
   guessForm2.reset();
 })
+
+// Function to refresh page when Play Again button is clicked
+const playAgain = document.querySelector('.playAgain');
+playAgain.addEventListener('click', function () {
+  location = location;
+});
 
 // Document ready
 function documentReady(func) {
