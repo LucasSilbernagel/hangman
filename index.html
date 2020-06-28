@@ -57,23 +57,23 @@
       <!-- Form to create a question for two player game -->
       <form action="#" id="questionForm" class="questionForm">
         <label for="categoryInput">Name your category</label>
-        <input type="text" id="categoryInput" placeholder="category">
+        <input type="text" id="categoryInput" placeholder="category" required>
         <label for="questionInput">Type your word</label>
-        <input type="text" id="questionInput" placeholder="word">
+        <input type="text" id="questionInput" placeholder="word" required>
         <button>start!</button>
       </form>
 
       <!-- Form to input guesses (one player) -->
       <form action="#" id="guessForm" class="guessForm">
         <label class="sr-only" for="guessInput">Guess a letter</label>
-        <input id="guessInput" type="text" placeholder="letter" maxlength="1">
+        <input id="guessInput" type="text" placeholder="letter" maxlength="1" required>
         <button>guess</button>
       </form>
 
       <!-- Form to input guesses (two players) -->
       <form action="#" id="guessForm2" class="guessForm">
         <label class="sr-only" for="guessInput">Guess a letter</label>
-        <input id="guessInput2" type="text" placeholder="letter" maxlength="1">
+        <input id="guessInput2" type="text" placeholder="letter" maxlength="1" required>
         <button>guess</button>
       </form>
 
