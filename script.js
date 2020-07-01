@@ -87,11 +87,13 @@ function start() {
   const twoPlayers = document.querySelector('.twoPlayers');
   const guessForm = document.getElementById('guessForm');
   const questionForm = document.getElementById('questionForm');
+  const gallows = document.getElementById('gallows');
   onePlayer.addEventListener('click', function () {
     this.classList.add('hidden');
     twoPlayers.classList.add('hidden');
     guessForm.classList.add('active');
     displayQuestion();
+    gallows.style.top = '200px';
   })
   twoPlayers.addEventListener('click', function () {
     this.classList.add('hidden');
@@ -139,6 +141,7 @@ questionForm.addEventListener('submit', function (e) {
   this.classList.remove('active2');
   displayQuestion2();
   guessForm2.classList.add('active');
+  gallows.style.top = '200px';
 })
 
 // On form submit (user guess) (one player game)
