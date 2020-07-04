@@ -92,22 +92,41 @@ hangman.alertModalBackground = document.getElementById('alertModalBackground');
 hangman.alertModalText = document.getElementById('alertModalText');
 // Button to close modal
 hangman.ok = document.getElementById('ok');
-// Close modal when button is clicked
-hangman.ok.addEventListener('click', function () {
+// Function to show modal
+hangman.showModal = function () {
   alertModal.classList.toggle('visible2');
   alertModalBackground.classList.toggle('visible2');
+  // Remove background elements from tab index when modal is open
+  document.querySelectorAll('form, input, a, button').forEach(x => x.setAttribute("tabindex", "-1"));
+  // Trap screen reader focus in modal when open
+  document.querySelectorAll('header, main, footer').forEach(x => x.setAttribute("aria-hidden", "true"));
+  // Allow users to click ok button
+  ok.setAttribute("tabindex", "0");
+  // Focus on ok button when modal opens
+  ok.focus();
+  // Close modal if user presses escape key
+  hangman.escapeModal();
+}
+// Function to close modal
+hangman.closeModal = function () {
+  alertModal.classList.toggle('visible2');
+  alertModalBackground.classList.toggle('visible2');
+  document.querySelectorAll('form, input, a, button').forEach(element => element.setAttribute("tabindex", "0"));
+  document.querySelectorAll('header, main, footer').forEach(element => element.setAttribute("aria-hidden", "false"));
+}
+// Close modal when button is clicked
+hangman.ok.addEventListener('click', function () {
+  hangman.closeModal();
 })
 // Close modal when background is clicked
 hangman.alertModalBackground.addEventListener('click', function () {
-  alertModal.classList.toggle('visible2');
-  alertModalBackground.classList.toggle('visible2');
+  hangman.closeModal();
 })
 // Close modal when escape key is pressed
 hangman.escapeModal = function () {
   document.addEventListener('keydown', function (event) {
     if (event.keyCode == 27) { 
-      alertModal.classList.remove('visible2');
-      alertModalBackground.classList.remove('visible2');
+      hangman.closeModal();
     }
   })
 }
@@ -200,18 +219,12 @@ hangman.guessFormFunction = function () {
       // Alert if guess is not valid
     } else if (!guessValue.match(hangman.validGuess)) {
       alertModalText.innerHTML = "<h3>Please enter a valid guess!</h3>"
-      alertModal.classList.toggle('visible2');
-      alertModalBackground.classList.toggle('visible2');
-      ok.focus();
-      hangman.escapeModal();
+      hangman.showModal();
 
       // Alert if letter has already been guessed
     } else if ((guessValue.match(hangman.validGuess)) && (hangman.userGuess.includes(guessValue))) {
       alertModalText.innerHTML = "<h3>You already guessed that letter!</h3>"
-      alertModal.classList.toggle('visible2');
-      alertModalBackground.classList.toggle('visible2');
-      ok.focus();
-      hangman.escapeModal();
+      hangman.showModal();
     }
 
     // If user guess is correct, make the letter appear in the word (one player game)
@@ -247,10 +260,7 @@ hangman.guessFormFunction = function () {
     // If all letters have been guessed correctly, player wins
     if (document.querySelectorAll('.correct.visible').length === hangman.letters.length) {
       alertModalText.innerHTML = "<h3>You win!</h3>"
-      alertModal.classList.toggle('visible2');
-      alertModalBackground.classList.toggle('visible2');
-      ok.focus();
-      hangman.escapeModal();
+      hangman.showModal();
       hangman.playAgain.classList.remove('hidden');
       guessForm.classList.remove('active');
     }
@@ -258,10 +268,7 @@ hangman.guessFormFunction = function () {
     // If hangman image is completed, player loses
     if (!rightLeg.classList.contains('hidden')) {
       alertModalText.innerHTML = "<h3>You lose!</h3>"
-      alertModal.classList.toggle('visible2');
-      alertModalBackground.classList.toggle('visible2');
-      ok.focus();
-      hangman.escapeModal();
+      hangman.showModal();
       hangman.playAgain.classList.remove('hidden');
       guessForm.classList.remove('active');
       // Show the correct word
@@ -300,17 +307,11 @@ hangman.guessForm2Function = function () {
       // Alert if guess is not valid
     } else if (!guessValue.match(hangman.validGuess)) {
       alertModalText.innerHTML = "<h3>Please enter a valid guess!</h3>"
-      alertModal.classList.toggle('visible2');
-      alertModalBackground.classList.toggle('visible2');
-      ok.focus();
-      hangman.escapeModal();
+      hangman.showModal();
       // Alert if letter has already been guessed
     } else if ((guessValue.match(hangman.validGuess)) && (hangman.userGuess.includes(guessValue))) {
       alertModalText.innerHTML = "<h3>You already guessed that letter!</h3>"
-      alertModal.classList.toggle('visible2');
-      alertModalBackground.classList.toggle('visible2');
-      ok.focus();
-      hangman.escapeModal();
+      hangman.showModal();
     }
 
     // If user guess is correct, make the letter appear in the word (one player game)
@@ -347,10 +348,7 @@ hangman.guessForm2Function = function () {
     // If all letters have been guessed correctly, player wins
     if (document.querySelectorAll('.correct.visible').length === letters2.length) {
       alertModalText.innerHTML = "<h3>You win!</h3>"
-      alertModal.classList.toggle('visible2');
-      alertModalBackground.classList.toggle('visible2');
-      ok.focus();
-      hangman.escapeModal();
+      hangman.showModal();
       playAgain.classList.remove('hidden');
       guessForm2.classList.remove('active');
     }
@@ -358,10 +356,7 @@ hangman.guessForm2Function = function () {
     // If hangman image has been completed, player loses
     if (!rightLeg.classList.contains('hidden')) {
       alertModalText.innerHTML = "<h3>You lose!</h3>"
-      alertModal.classList.toggle('visible2');
-      alertModalBackground.classList.toggle('visible2');
-      ok.focus();
-      hangman.escapeModal();
+      hangman.showModal();
       playAgain.classList.remove('hidden');
       guessForm2.classList.remove('active');
       // Show the correct word

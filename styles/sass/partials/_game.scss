@@ -64,6 +64,8 @@ form {
 
 // Modal to display alerts
 .alertModal {
+  width: 300px;
+  text-align: center;
   z-index: 20;
   padding: 20px;
   overflow: auto;
