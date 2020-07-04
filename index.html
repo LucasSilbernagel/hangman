@@ -74,20 +74,11 @@
       <form action="#" id="guessForm2" class="guessForm">
         <label class="sr-only" for="guessInput">Guess a letter</label>
         <input id="guessInput2" type="text" placeholder="letter" maxlength="1" required>
-        <button>guess</button>
+        <button class="guess">guess</button>
       </form>
 
       <!-- Incorrect guesses displayed here -->
       <div class="wrong" aria-label="if you guess a wrong letter it will appear here"></div>
-
-      <!-- Modal for alerts -->
-      <div class="alertModal" id="alertModal">
-        <!-- Text is displayed here -->
-        <div class="alertModalText" id="alertModalText"></div>
-        <!-- Button to close modal -->
-        <button id="ok">ok</button>
-      </div>
-      <div class="alertModalBackground" id="alertModalBackground"></div>
 
       <!-- Button to play again. Reloads the page. -->
       <button class="playAgain hidden">Play again</button>
@@ -101,6 +92,15 @@
       <p>Copyright 2020 <a href="https://lucassilbernagel.com/" target="_blank" rel="noopener noreferrer">Lucas Silbernagel</a></p>
     </div>
   </footer>
+
+  <!-- Modal for alerts -->
+  <div class="alertModal" id="alertModal">
+    <!-- Text is displayed here -->
+    <div class="alertModalText" id="alertModalText"></div>
+    <!-- Button to close modal -->
+    <button id="ok">ok</button>
+  </div>
+  <div class="alertModalBackground" id="alertModalBackground"></div>
 
   <!-- Load scripts -->
   <script src="./script.js"></script>
