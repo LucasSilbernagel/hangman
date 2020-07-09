@@ -97,9 +97,9 @@ hangman.showModal = function () {
   alertModal.classList.toggle('visible2');
   alertModalBackground.classList.toggle('visible2');
   // Remove background elements from tab index when modal is open
-  document.querySelectorAll('form, input, a, button').forEach(x => x.setAttribute("tabindex", "-1"));
+  document.querySelectorAll('form, input, a, button').forEach(element => element.setAttribute("tabindex", "-1"));
   // Trap screen reader focus in modal when open
-  document.querySelectorAll('header, main, footer').forEach(x => x.setAttribute("aria-hidden", "true"));
+  document.querySelectorAll('header, main, footer').forEach(element => element.setAttribute("aria-hidden", "true"));
   // Allow users to click ok button
   ok.setAttribute("tabindex", "0");
   // Focus on ok button when modal opens
