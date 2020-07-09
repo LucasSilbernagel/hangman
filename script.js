@@ -376,11 +376,13 @@ hangman.playAgain.addEventListener('click', function () {
   location.reload();
 });
 
-// Document ready
-hangman.documentReady = function (func) {
-  document.addEventListener('DOMContentLoaded', func);
+// Initialize app
+hangman.init = function () {
+  hangman.start();
+  hangman.questionFormFunction();
+  hangman.guessFormFunction();
+  hangman.guessForm2Function();
 }
-hangman.documentReady(hangman.start);
-hangman.documentReady(hangman.questionFormFunction);
-hangman.documentReady(hangman.guessFormFunction);
-hangman.documentReady(hangman.guessForm2Function);
+
+// Document ready
+document.addEventListener('DOMContentLoaded', hangman.init);
