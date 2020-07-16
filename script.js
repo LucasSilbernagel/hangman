@@ -202,6 +202,7 @@ hangman.guessFormFunction = function () {
     let guessValue = document.getElementById('guessInput').value.toUpperCase();
     let correct = document.querySelectorAll('.correct');
     const wrong = document.querySelector('.wrong');
+    let numberWrong = wrong.getElementsByTagName('P');
     const head = document.querySelector('.head');
     const torso = document.querySelector('.torso');
     const leftArm = document.querySelector('.leftArm');
@@ -241,17 +242,22 @@ hangman.guessFormFunction = function () {
     function displayBodyParts() {
       if (!hangman.letters.includes(guessValue)) {
         wrong.innerHTML += `<p>${guessValue}</p>`;
-        if (head.classList.contains('hidden')) {
+        if (numberWrong.length === 1) {
           head.classList.remove('hidden')
-        } else if ((!head.classList.contains('hidden')) && (torso.classList.contains('hidden'))) {
+        }
+        if (numberWrong.length === 2) {
           torso.classList.remove('hidden')
-        } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (leftArm.classList.contains('hidden'))) {
+        }
+        if (numberWrong.length === 3) {
           leftArm.classList.remove('hidden')
-        } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (rightArm.classList.contains('hidden'))) {
+        }
+        if (numberWrong.length === 4) {
           rightArm.classList.remove('hidden')
-        } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (!rightArm.classList.contains('hidden')) && (leftLeg.classList.contains('hidden'))) {
+        }
+        if (numberWrong.length === 5) {
           leftLeg.classList.remove('hidden')
-        } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (!rightArm.classList.contains('hidden')) && (!leftLeg.classList.contains('hidden')) && (rightLeg.classList.contains('hidden'))) {
+        }
+        if (numberWrong.length === 6) {
           rightLeg.classList.remove('hidden')
         }
       }
@@ -265,8 +271,8 @@ hangman.guessFormFunction = function () {
       guessForm.classList.remove('active');
     }
 
-    // If hangman image is completed, player loses
-    if (!rightLeg.classList.contains('hidden')) {
+    // If player guesses 6 wrong letters, player loses
+    if (numberWrong.length === 6) {
       alertModalText.innerHTML = "<h3>You lose!</h3>"
       hangman.showModal();
       hangman.playAgain.classList.remove('hidden');
@@ -289,6 +295,7 @@ hangman.guessForm2Function = function () {
     let guessValue = document.getElementById('guessInput2').value.toUpperCase();
     let correct = document.querySelectorAll('.correct');
     const wrong = document.querySelector('.wrong');
+    let numberWrong = wrong.getElementsByTagName('P');
     const head = document.querySelector('.head');
     const torso = document.querySelector('.torso');
     const leftArm = document.querySelector('.leftArm');
@@ -329,17 +336,22 @@ hangman.guessForm2Function = function () {
       let letters2 = hangman.questions2[1].toUpperCase().split([,]);
       if (!letters2.includes(guessValue)) {
         wrong.innerHTML += `<p>${guessValue}</p>`;
-        if (head.classList.contains('hidden')) {
+        if (numberWrong.length === 1) {
           head.classList.remove('hidden')
-        } else if ((!head.classList.contains('hidden')) && (torso.classList.contains('hidden'))) {
+        }
+        if (numberWrong.length === 2) {
           torso.classList.remove('hidden')
-        } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (leftArm.classList.contains('hidden'))) {
+        }
+        if (numberWrong.length === 3) {
           leftArm.classList.remove('hidden')
-        } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (rightArm.classList.contains('hidden'))) {
+        }
+        if (numberWrong.length === 4) {
           rightArm.classList.remove('hidden')
-        } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (!rightArm.classList.contains('hidden')) && (leftLeg.classList.contains('hidden'))) {
+        }
+        if (numberWrong.length === 5) {
           leftLeg.classList.remove('hidden')
-        } else if ((!head.classList.contains('hidden')) && (!torso.classList.contains('hidden')) && (!leftArm.classList.contains('hidden')) && (!rightArm.classList.contains('hidden')) && (!leftLeg.classList.contains('hidden')) && (rightLeg.classList.contains('hidden'))) {
+        }
+        if (numberWrong.length === 6) {
           rightLeg.classList.remove('hidden')
         }
       }
