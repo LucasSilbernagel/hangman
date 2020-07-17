@@ -84,7 +84,7 @@ form {
     margin-top: 10px;
   }
 }
-.alertModal.visible2 {
+.alertModal.visibleModal {
   visibility: visible;
   animation-name: slideIn;
   animation-duration: 0.5s
@@ -103,7 +103,7 @@ form {
   z-index: 10;
   visibility: hidden;
 }
-.alertModalBackground.visible2 {
+.alertModalBackground.visibleModal {
   visibility: visible;
 }
 

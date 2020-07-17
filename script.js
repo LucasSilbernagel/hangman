@@ -2,7 +2,7 @@
 const hangman = {}
 
 // Grouped list of categories and words for one player game
-hangman.questions = [
+hangman.onePlayerQuestions = [
   [
     "animal",
     "lizard"
@@ -70,13 +70,13 @@ hangman.questions = [
 ]
 
 // Array to hold category and question for two player game
-hangman.questions2 = [];
+hangman.twoPlayerQuestions = [];
 
 // Randomize order of questions for one player game
-hangman.randomQuestion = hangman.questions[Math.floor(Math.random() * hangman.questions.length)];
+hangman.randomQuestion = hangman.onePlayerQuestions[Math.floor(Math.random() * hangman.onePlayerQuestions.length)];
 
 // Words to guess, split into individual letters
-hangman.letters = hangman.randomQuestion[1].toUpperCase().split([,]);
+hangman.onePlayerLetters = hangman.randomQuestion[1].toUpperCase().split([,]);
 
 // REGEX to ensure user can only guess letters
 hangman.validGuess = /[a-zA-Z]/;
@@ -94,8 +94,8 @@ hangman.alertModalText = document.getElementById('alertModalText');
 hangman.ok = document.getElementById('ok');
 // Function to show modal
 hangman.showModal = function () {
-  alertModal.classList.toggle('visible2');
-  alertModalBackground.classList.toggle('visible2');
+  alertModal.classList.toggle('visibleModal');
+  alertModalBackground.classList.toggle('visibleModal');
   // Remove background elements from tab index when modal is open
   document.querySelectorAll('form, input, a, button').forEach(element => element.setAttribute("tabindex", "-1"));
   // Trap screen reader focus in modal when open
@@ -109,8 +109,8 @@ hangman.showModal = function () {
 }
 // Function to close modal
 hangman.closeModal = function () {
-  alertModal.classList.toggle('visible2');
-  alertModalBackground.classList.toggle('visible2');
+  alertModal.classList.toggle('visibleModal');
+  alertModalBackground.classList.toggle('visibleModal');
   document.querySelectorAll('form, input, a, button').forEach(element => element.setAttribute("tabindex", "0"));
   document.querySelectorAll('header, main, footer').forEach(element => element.setAttribute("aria-hidden", "false"));
 }
@@ -135,25 +135,25 @@ hangman.escapeModal = function () {
 hangman.start = function () {
   const onePlayer = document.querySelector('.onePlayer');
   const twoPlayers = document.querySelector('.twoPlayers');
-  const guessForm = document.getElementById('guessForm');
+  const onePlayerGuessForm = document.getElementById('onePlayerGuessForm');
   const questionForm = document.getElementById('questionForm');
   const gallows = document.getElementById('gallows');
   onePlayer.addEventListener('click', function () {
     this.classList.add('hidden');
     twoPlayers.classList.add('hidden');
-    guessForm.classList.add('active');
-    hangman.displayQuestion();
+    onePlayerGuessForm.classList.add('active');
+    hangman.displayOnePlayerQuestion();
     gallows.style.top = '200px';
   })
   twoPlayers.addEventListener('click', function () {
     this.classList.add('hidden');
     onePlayer.classList.add('hidden');
-    questionForm.classList.add('active2');
+    questionForm.classList.add('questionFormVisible');
   })
 }
 
 // Display random category and number of letters for the word (one player game)
-hangman.displayQuestion = function () {
+hangman.displayOnePlayerQuestion = function () {
   // Individual letter slots
   const category = document.querySelector('.category');
   // Section for correct letters to appear
@@ -161,45 +161,45 @@ hangman.displayQuestion = function () {
   category.innerHTML = `
     <h2 aria-label="Category: ${hangman.randomQuestion[0]}, ${hangman.randomQuestion[1].length} letters">${hangman.randomQuestion[0]}</h2>
   `
-  const displayedLetter = hangman.letters.map((letter) => `<span aria-hidden="true" class="correct">${letter}</span>`).join(' ');
+  const displayedLetter = hangman.onePlayerLetters.map((letter) => `<span aria-hidden="true" class="correct">${letter}</span>`).join(' ');
   blank.innerHTML = displayedLetter;
 }
 
 // Display category and number of letters for the word (two player game)
-hangman.displayQuestion2 = function () {
+hangman.displayTwoPlayerQuestion = function () {
   // Individual letter slots
   const category = document.querySelector('.category');
   // Section for correct letters to appear
   const blank = document.querySelector('.blank');
   category.innerHTML = `
-    <h2 aria-label="Category: ${hangman.questions2[0]}, ${hangman.questions2[1].length} letters">${hangman.questions2[0]}</h2>
+    <h2 aria-label="Category: ${hangman.twoPlayerQuestions[0]}, ${hangman.twoPlayerQuestions[1].length} letters">${hangman.twoPlayerQuestions[0]}</h2>
   `
-  let letters2 = hangman.questions2[1].toUpperCase().split([,]);
-  const displayedLetter = letters2.map((letter) => `<span aria-hidden="true" class="correct">${letter}</span>`).join(' ');
+  let twoPlayerLetters = hangman.twoPlayerQuestions[1].toUpperCase().split([,]);
+  const displayedLetter = twoPlayerLetters.map((letter) => `<span aria-hidden="true" class="correct">${letter}</span>`).join(' ');
   blank.innerHTML = displayedLetter;
 }
 
 // On form submit (question creation for 2 player game)
-hangman.questionFormFunction = function () {
+hangman.createQuestion = function () {
   questionForm.addEventListener('submit', function (e) {
     const categoryInput = document.getElementById('categoryInput');
     const questionInput = document.getElementById('questionInput');
     // Prevent page reload
     e.preventDefault();
-    // Push category and word to questions2 array
-    hangman.questions2.push(categoryInput.value);
-    hangman.questions2.push(questionInput.value);
-    this.classList.remove('active2');
-    hangman.displayQuestion2();
-    guessForm2.classList.add('active');
+    // Push category and word to twoPlayerQuestions array
+    hangman.twoPlayerQuestions.push(categoryInput.value);
+    hangman.twoPlayerQuestions.push(questionInput.value);
+    this.classList.remove('questionFormVisible');
+    hangman.displayTwoPlayerQuestion();
+    twoPlayerGuessForm.classList.add('active');
     gallows.style.top = '200px';
   })
 }
 
-hangman.guessFormFunction = function () {
+hangman.checkOnePlayerGuess = function () {
   // On form submit (user guess) (one player game)
-  guessForm.addEventListener('submit', function (e) {
-    let guessValue = document.getElementById('guessInput').value.toUpperCase();
+  onePlayerGuessForm.addEventListener('submit', function (e) {
+    let guessValue = document.getElementById('onePlayerGuessInput').value.toUpperCase();
     let correct = document.querySelectorAll('.correct');
     const wrong = document.querySelector('.wrong');
     let numberWrong = wrong.getElementsByTagName('P');
@@ -229,8 +229,8 @@ hangman.guessFormFunction = function () {
     }
 
     // If user guess is correct, make the letter appear in the word (one player game)
-    for (let i = 0; i < hangman.letters.length; i++) {
-      if (hangman.letters.includes(guessValue)) {
+    for (let i = 0; i < hangman.onePlayerLetters.length; i++) {
+      if (hangman.onePlayerLetters.includes(guessValue)) {
         if (correct[i].innerHTML === guessValue) {
           correct[i].classList.add('visible');
           correct[i].setAttribute("aria-hidden", "false");
@@ -240,7 +240,7 @@ hangman.guessFormFunction = function () {
 
     // Function to add body parts for incorrect guesses
     function displayBodyParts() {
-      if (!hangman.letters.includes(guessValue)) {
+      if (!hangman.onePlayerLetters.includes(guessValue)) {
         wrong.innerHTML += `<p>${guessValue}</p>`;
         if (numberWrong.length === 1) {
           head.classList.remove('hidden')
@@ -264,11 +264,11 @@ hangman.guessFormFunction = function () {
     }
 
     // If all letters have been guessed correctly, player wins
-    if (document.querySelectorAll('.correct.visible').length === hangman.letters.length) {
+    if (document.querySelectorAll('.correct.visible').length === hangman.onePlayerLetters.length) {
       alertModalText.innerHTML = "<h3>You win!</h3>"
       hangman.showModal();
       hangman.playAgain.classList.remove('hidden');
-      guessForm.classList.remove('active');
+      onePlayerGuessForm.classList.remove('active');
     }
 
     // If player guesses 6 wrong letters, player loses
@@ -276,23 +276,23 @@ hangman.guessFormFunction = function () {
       alertModalText.innerHTML = "<h3>You lose!</h3>"
       hangman.showModal();
       hangman.playAgain.classList.remove('hidden');
-      guessForm.classList.remove('active');
+      onePlayerGuessForm.classList.remove('active');
       // Show the correct word
-      for (let i = 0; i < hangman.letters.length; i++) {
+      for (let i = 0; i < hangman.onePlayerLetters.length; i++) {
         correct[i].classList.add('visible')
       }
     }
 
     // Clear the form input after submit
-    guessForm.reset();
+    onePlayerGuessForm.reset();
   })
 }
 
 // On form submit (user guess) (two player game)
-hangman.guessForm2Function = function () {
-  guessForm2.addEventListener('submit', function (e) {
-    let letters2 = hangman.questions2[1].toUpperCase().split([,]);
-    let guessValue = document.getElementById('guessInput2').value.toUpperCase();
+hangman.checkTwoPlayerGuess = function () {
+  twoPlayerGuessForm.addEventListener('submit', function (e) {
+    let twoPlayerLetters = hangman.twoPlayerQuestions[1].toUpperCase().split([,]);
+    let guessValue = document.getElementById('twoPlayerGuessInput').value.toUpperCase();
     let correct = document.querySelectorAll('.correct');
     const wrong = document.querySelector('.wrong');
     let numberWrong = wrong.getElementsByTagName('P');
@@ -322,8 +322,8 @@ hangman.guessForm2Function = function () {
     }
 
     // If user guess is correct, make the letter appear in the word (one player game)
-    for (let i = 0; i < letters2.length; i++) {
-      if (letters2.includes(guessValue)) {
+    for (let i = 0; i < twoPlayerLetters.length; i++) {
+      if (twoPlayerLetters.includes(guessValue)) {
         if (correct[i].innerHTML === guessValue) {
           correct[i].classList.add('visible');
           correct[i].setAttribute("aria-hidden", "false");
@@ -333,8 +333,8 @@ hangman.guessForm2Function = function () {
 
     // Function to add body parts for incorrect guesses
     function displayBodyParts() {
-      let letters2 = hangman.questions2[1].toUpperCase().split([,]);
-      if (!letters2.includes(guessValue)) {
+      let twoPlayerLetters = hangman.twoPlayerQuestions[1].toUpperCase().split([,]);
+      if (!twoPlayerLetters.includes(guessValue)) {
         wrong.innerHTML += `<p>${guessValue}</p>`;
         if (numberWrong.length === 1) {
           head.classList.remove('hidden')
@@ -358,11 +358,11 @@ hangman.guessForm2Function = function () {
     }
 
     // If all letters have been guessed correctly, player wins
-    if (document.querySelectorAll('.correct.visible').length === letters2.length) {
+    if (document.querySelectorAll('.correct.visible').length === twoPlayerLetters.length) {
       alertModalText.innerHTML = "<h3>You win!</h3>"
       hangman.showModal();
       playAgain.classList.remove('hidden');
-      guessForm2.classList.remove('active');
+      twoPlayerGuessForm.classList.remove('active');
     }
 
     // If hangman image has been completed, player loses
@@ -370,15 +370,15 @@ hangman.guessForm2Function = function () {
       alertModalText.innerHTML = "<h3>You lose!</h3>"
       hangman.showModal();
       playAgain.classList.remove('hidden');
-      guessForm2.classList.remove('active');
+      twoPlayerGuessForm.classList.remove('active');
       // Show the correct word
-      for (let i = 0; i < letters2.length; i++) {
+      for (let i = 0; i < twoPlayerLetters.length; i++) {
         correct[i].classList.add('visible')
       }
     }
 
     // Clear the form input after submit
-    guessForm2.reset();
+    twoPlayerGuessForm.reset();
   })
 }
 
@@ -391,9 +391,9 @@ hangman.playAgain.addEventListener('click', function () {
 // Initialize app
 hangman.init = function () {
   hangman.start();
-  hangman.questionFormFunction();
-  hangman.guessFormFunction();
-  hangman.guessForm2Function();
+  hangman.createQuestion();
+  hangman.checkOnePlayerGuess();
+  hangman.checkTwoPlayerGuess();
 }
 
 // Document ready
