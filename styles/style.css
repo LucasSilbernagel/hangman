@@ -247,7 +247,7 @@ html {
   display: block;
 }
 
-.active2 {
+.questionFormVisible {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -536,7 +536,7 @@ form {
   margin-top: 10px;
 }
 
-.alertModal.visible2 {
+.alertModal.visibleModal {
   visibility: visible;
   -webkit-animation-name: slideIn;
           animation-name: slideIn;
@@ -567,7 +567,7 @@ form {
   visibility: hidden;
 }
 
-.alertModalBackground.visible2 {
+.alertModalBackground.visibleModal {
   visibility: visible;
 }
 
