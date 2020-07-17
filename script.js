@@ -203,6 +203,7 @@ hangman.checkOnePlayerGuess = function () {
     let correct = document.querySelectorAll('.correct');
     const wrong = document.querySelector('.wrong');
     let numberWrong = wrong.getElementsByTagName('P');
+    const body = document.querySelector('.body');
     const head = document.querySelector('.head');
     const torso = document.querySelector('.torso');
     const leftArm = document.querySelector('.leftArm');
@@ -244,21 +245,27 @@ hangman.checkOnePlayerGuess = function () {
         wrong.innerHTML += `<p>${guessValue}</p>`;
         if (numberWrong.length === 1) {
           head.classList.remove('hidden')
+          body.setAttribute("aria-label", "one of six body parts visible")
         }
         if (numberWrong.length === 2) {
           torso.classList.remove('hidden')
+          body.setAttribute("aria-label", "two of six body parts visible")
         }
         if (numberWrong.length === 3) {
           leftArm.classList.remove('hidden')
+          body.setAttribute("aria-label", "three of six body parts visible")
         }
         if (numberWrong.length === 4) {
           rightArm.classList.remove('hidden')
+          body.setAttribute("aria-label", "four of six body parts visible")
         }
         if (numberWrong.length === 5) {
           leftLeg.classList.remove('hidden')
+          body.setAttribute("aria-label", "five of six body parts visible")
         }
         if (numberWrong.length === 6) {
           rightLeg.classList.remove('hidden')
+          body.setAttribute("aria-label", "all body parts visible, you have been hanged!")
         }
       }
     }
@@ -296,6 +303,7 @@ hangman.checkTwoPlayerGuess = function () {
     let correct = document.querySelectorAll('.correct');
     const wrong = document.querySelector('.wrong');
     let numberWrong = wrong.getElementsByTagName('P');
+    const body = document.querySelector('.body');
     const head = document.querySelector('.head');
     const torso = document.querySelector('.torso');
     const leftArm = document.querySelector('.leftArm');
@@ -338,21 +346,27 @@ hangman.checkTwoPlayerGuess = function () {
         wrong.innerHTML += `<p>${guessValue}</p>`;
         if (numberWrong.length === 1) {
           head.classList.remove('hidden')
+          body.setAttribute("aria-label", "one of six body parts visible")
         }
         if (numberWrong.length === 2) {
           torso.classList.remove('hidden')
+          body.setAttribute("aria-label", "two of six body parts visible")
         }
         if (numberWrong.length === 3) {
           leftArm.classList.remove('hidden')
+          body.setAttribute("aria-label", "three of six body parts visible")
         }
         if (numberWrong.length === 4) {
           rightArm.classList.remove('hidden')
+          body.setAttribute("aria-label", "four of six body parts visible")
         }
         if (numberWrong.length === 5) {
           leftLeg.classList.remove('hidden')
+          body.setAttribute("aria-label", "five of six body parts visible")
         }
         if (numberWrong.length === 6) {
           rightLeg.classList.remove('hidden')
+          body.setAttribute("aria-label", "all body parts visible, you have been hanged!")
         }
       }
     }
