@@ -161,7 +161,7 @@ hangman.displayOnePlayerQuestion = function () {
   category.innerHTML = `
     <h2 aria-label="Category: ${hangman.randomQuestion[0]}, ${hangman.randomQuestion[1].length} letters">${hangman.randomQuestion[0]}</h2>
   `
-  const displayedLetter = hangman.onePlayerLetters.map((letter) => `<span aria-hidden="true" class="correct">${letter}</span>`).join(' ');
+  const displayedLetter = hangman.onePlayerLetters.map((letter, index) => `<span class="letterSpace">letter ${index + 1}<span aria-hidden="true" class="correct">${letter}</span></span>`).join(' ');
   blank.innerHTML = displayedLetter;
 }
 
@@ -175,7 +175,7 @@ hangman.displayTwoPlayerQuestion = function () {
     <h2 aria-label="Category: ${hangman.twoPlayerQuestions[0]}, ${hangman.twoPlayerQuestions[1].length} letters">${hangman.twoPlayerQuestions[0]}</h2>
   `
   let twoPlayerLetters = hangman.twoPlayerQuestions[1].toUpperCase().split([,]);
-  const displayedLetter = twoPlayerLetters.map((letter) => `<span aria-hidden="true" class="correct">${letter}</span>`).join(' ');
+  const displayedLetter = twoPlayerLetters.map((letter, index) => `<span class="letterSpace">letter ${index + 1}<span aria-hidden="true" class="correct">${letter}</span></span>`).join(' ');
   blank.innerHTML = displayedLetter;
 }
 
