@@ -15,10 +15,14 @@ h2 {
   margin-top: 320px;
   margin-bottom: 50px;
 }
-span {
+.letterSpace {
   color: transparent;
-  border-bottom: 2px solid $black;
+  border-bottom: 3px solid $black;
   user-select: none;
+  font-size: 3px;
+}
+.correct {
+  font-size: 2rem;
 }
 
 // Form to input a guess
