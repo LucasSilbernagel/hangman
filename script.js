@@ -5,7 +5,7 @@ const hangman = {}
 hangman.onePlayerQuestions = [
   [
     "animal",
-    "lizard"
+    "gecko"
   ],
   [
     "animal",
@@ -13,7 +13,15 @@ hangman.onePlayerQuestions = [
   ],
   [
     "animal",
-    "snake"
+    "dolphin"
+  ],
+  [
+    "animal",
+    "squirrel"
+  ],
+  [
+    "animal",
+    "cobra"
   ],
   [
     "animal",
@@ -25,7 +33,15 @@ hangman.onePlayerQuestions = [
   ],
   [
     "plant",
-    "shrub"
+    "moss"
+  ],
+  [
+    "plant",
+    "lily"
+  ],
+  [
+    "plant",
+    "yucca"
   ],
   [
     "plant",
@@ -33,11 +49,19 @@ hangman.onePlayerQuestions = [
   ],
   [
     "plant",
-    "grass"
+    "ivy"
   ],
   [
     "food",
     "pizza"
+  ],
+  [
+    "food",
+    "hummus"
+  ],
+  [
+    "food",
+    "pho"
   ],
   [
     "food",
@@ -61,7 +85,15 @@ hangman.onePlayerQuestions = [
   ],
   [
     "country",
+    "vietnam"
+  ],
+  [
+    "country",
     "brazil"
+  ],
+  [
+    "country",
+    "russia"
   ],
   [
     "country",
