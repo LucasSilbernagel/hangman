@@ -11,5 +11,5 @@ https://lucassilbernagel.github.io/hangman/
 
 ## Future Goals
 
-One idea that I have is for players to guess letters using a virtual keyboard, rather than a text input. Players could click or tap each letter of the virtual keyboard, or use the physical keyboard of their computer.
+One idea that I have is for players to guess letters using a virtual keyboard, rather than a text input. Players could click or tap each letter of the virtual keyboard, or use the physical keyboard of their device.
 Another idea is to add sound effects or music.
