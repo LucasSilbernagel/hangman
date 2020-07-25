@@ -215,6 +215,7 @@ hangman.displayTwoPlayerQuestion = function () {
 hangman.createQuestion = function () {
   questionForm.addEventListener('submit', function (e) {
     const categoryInput = document.getElementById('categoryInput');
+    const questionForm = document.getElementById('questionForm');
     const questionInput = document.getElementById('questionInput');
     // Prevent page reload
     e.preventDefault();
@@ -225,6 +226,9 @@ hangman.createQuestion = function () {
     hangman.displayTwoPlayerQuestion();
     twoPlayerGuessForm.classList.add('active');
     gallows.style.top = '200px';
+
+    // Reset the question form
+    questionForm.reset();
   })
 }
 
