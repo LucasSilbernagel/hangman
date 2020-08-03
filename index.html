@@ -55,7 +55,7 @@
       <div class="blank" aria-label="if you guess a correct letter it will appear here"></div>
 
       <!-- Form to create a question for two player game -->
-      <form action="#" id="questionForm" class="questionForm">
+      <form action="#" id="questionForm" class="questionForm" autocomplete="off">
         <label for="categoryInput">Name your category</label>
         <input type="text" id="categoryInput" placeholder="category" required>
         <label for="questionInput">Type your word</label>
@@ -64,14 +64,14 @@
       </form>
 
       <!-- Form to input guesses (one player) -->
-      <form action="#" id="onePlayerGuessForm" class="guessForm">
+      <form action="#" id="onePlayerGuessForm" class="guessForm" autocomplete="off">
         <label class="sr-only" for="onePlayerGuessInput">Guess a letter</label>
         <input id="onePlayerGuessInput" type="text" placeholder="letter" maxlength="1" required>
         <button>guess</button>
       </form>
 
       <!-- Form to input guesses (two players) -->
-      <form action="#" id="twoPlayerGuessForm" class="guessForm">
+      <form action="#" id="twoPlayerGuessForm" class="guessForm" autocomplete="off">
         <label class="sr-only" for="twoPlayerGuessInput">Guess a letter</label>
         <input id="twoPlayerGuessInput" type="text" placeholder="letter" maxlength="1" required>
         <button class="guess">guess</button>
