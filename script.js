@@ -86,8 +86,13 @@ hangman.displayOnePlayerQuestion = function () {
   // Section for correct letters to appear
   const blank = document.querySelector('.blank');
 
-  // Get a random word from the API
-  fetch(`https://www.wordgamedb.com/api/v1/words`)
+  // Function to pick a random number between two integers
+  function randomIntFromInterval(min, max) { 
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
+
+  // Get a random word from the API, between 3 and 7 letters long
+  fetch(`https://www.wordgamedb.com/api/v1/words/?numLetters=${randomIntFromInterval(3, 7)}`)
     .then(res => res.json())
     .then(data => {
       let randomWord = data[Math.floor(Math.random() * data.length)];
