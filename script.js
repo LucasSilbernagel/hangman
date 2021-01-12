@@ -21,6 +21,7 @@ hangman.ok = document.getElementById('ok');
 // Function to show modal
 hangman.showModal = function () {
   alertModal.classList.add('visibleModal');
+  alertModal.setAttribute("role", "alertdialog");
   alertModalBackground.classList.add('visibleModal');
   // Remove background elements from tab index when modal is open
   document.querySelectorAll('form, input, a, button').forEach(element => element.setAttribute("tabindex", "-1"));
@@ -36,6 +37,7 @@ hangman.showModal = function () {
 // Function to close modal
 hangman.closeModal = function () {
   alertModal.classList.remove('visibleModal');
+  alertModal.removeAttribute("role");
   alertModalBackground.classList.remove('visibleModal');
   document.querySelectorAll('form, input, a, button').forEach(element => element.setAttribute("tabindex", "0"));
   document.querySelectorAll('header, main, footer').forEach(element => element.setAttribute("aria-hidden", "false"));
