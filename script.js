@@ -65,13 +65,11 @@ hangman.start = function () {
   const twoPlayers = document.querySelector('.twoPlayers');
   const onePlayerGuessForm = document.getElementById('onePlayerGuessForm');
   const questionForm = document.getElementById('questionForm');
-  const gallows = document.getElementById('gallows');
   onePlayer.addEventListener('click', function () {
     this.classList.add('hidden');
     twoPlayers.classList.add('hidden');
     onePlayerGuessForm.classList.add('active');
     hangman.displayOnePlayerQuestion();
-    gallows.style.top = '200px';
   })
   twoPlayers.addEventListener('click', function () {
     this.classList.add('hidden');
@@ -100,6 +98,9 @@ hangman.displayOnePlayerQuestion = function () {
       let randomWord = data[Math.floor(Math.random() * data.length)];
 
       let letters = randomWord.word.toUpperCase().split([,]);
+
+      const gallows = document.getElementById('gallows');
+      gallows.style.top = '200px';
 
       category.innerHTML = `
         <h2 aria-label="Category: ${randomWord.category}, ${randomWord.word.length} letters">${randomWord.category}</h2>
