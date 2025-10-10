@@ -92,10 +92,18 @@ hangman.displayOnePlayerQuestion = function () {
   };
 
   // Get a random word from the API, between 3 and 7 letters long
-  fetch(`https://www.wordgamedb.com/api/v1/words/?numLetters=${randomIntFromInterval(3, 7)}`)
-    .then(res => res.json())
+  fetch(`https://www.wordgamedb.com/api/v2/words/random?minLetters=3&maxLetters=7`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`API request failed: ${res.status}`);
+      }
+      return res.json();
+    })
     .then(data => {
-      let randomWord = data[Math.floor(Math.random() * data.length)];
+      if (!data || !data.word) {
+        throw new Error('No word returned from API');
+      }
+      const randomWord = data;
 
       let letters = randomWord.word.toUpperCase().split([,]);
 
@@ -207,6 +215,11 @@ hangman.displayOnePlayerQuestion = function () {
         onePlayerGuessForm.reset();
       })
     })
+    .catch(error => {
+      console.error('Error fetching word:', error);
+      alertModalText.innerHTML = "<h3>Error loading word. Please try again!</h3>";
+      hangman.showModal();
+    });
 }
 
 // Display category and number of letters for the word (two player game)
